@@ -1134,83 +1134,87 @@
 
       <!-- ── OVERVIEW TAB ── -->
       <div id="dtab-content-overview">
-        <div style="padding:20px 24px;">
+        <div style="padding:24px 28px; max-width:640px;">
 
           <!-- WELCOME -->
-          <div style="margin-bottom:14px;">
-            <h2 style="font-size:17px; font-weight:800; color:var(--blue-dark);">Welcome back 👋</h2>
+          <div style="margin-bottom:18px;">
+            <h2 style="font-size:16px; font-weight:800; color:var(--blue-dark);">Welcome back 👋</h2>
             <p style="color:var(--muted); font-size:12px; margin-top:2px;">Your PeerTappers learning journey.</p>
           </div>
 
-          <!-- ── LEARNING CURVE CHART ── -->
-          <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin-bottom:12px;">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+          <!-- ── STATS ROW ── -->
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px;">
+            <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:10px;">
+              <div style="font-size:18px;">📚</div>
               <div>
-                <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--teal); margin-bottom:1px;">📈 Learning Curve</div>
-                <div style="font-size:13px; font-weight:700; color:var(--blue-dark);">Skill Accumulation Over Time</div>
-                <div style="font-size:10px; color:var(--muted-light);">Each dot = one session attended</div>
-              </div>
-              <div style="display:flex; gap:5px; flex-wrap:wrap;">
-                <span style="background:#EFF6FF; color:#1F4FD8; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Research</span>
-                <span style="background:#FFF8E1; color:#D97706; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Tech</span>
-                <span style="background:#F0FDFA; color:#0D9488; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Career</span>
-                <span style="background:#F5F3FF; color:#7C3AED; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Consulting</span>
+                <div style="font-size:18px; font-weight:800; color:var(--blue); line-height:1;" id="dash-available-count">0</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.05em; margin-top:1px;">Available</div>
               </div>
             </div>
-            <div style="position:relative; height:120px;" id="learning-curve-wrap">
-              <svg id="learning-curve-svg" width="100%" height="120" style="overflow:visible;"></svg>
+            <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:10px;">
+              <div style="font-size:18px;">✅</div>
+              <div>
+                <div style="font-size:18px; font-weight:800; color:var(--teal); line-height:1;" id="dash-enrolled-count">0</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.05em; margin-top:1px;">Enrolled</div>
+              </div>
+            </div>
+            <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:10px;">
+              <div style="font-size:18px;">⚡</div>
+              <div>
+                <div style="font-size:18px; font-weight:800; color:var(--amber); line-height:1;" id="dash-skill-pts">—</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.05em; margin-top:1px;">Skill pts</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── LEARNING CURVE CHART ── -->
+          <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:14px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; gap:8px; flex-wrap:wrap;">
+              <div>
+                <div style="font-size:11px; font-weight:700; color:var(--blue-dark);">📈 Learning Curve</div>
+                <div style="font-size:10px; color:var(--muted-light); margin-top:1px;">Skill points from completed sessions</div>
+              </div>
+              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                <span style="background:#EFF6FF; color:#1F4FD8; font-size:9px; font-weight:600; padding:2px 7px; border-radius:100px;">Research</span>
+                <span style="background:#FFF8E1; color:#D97706; font-size:9px; font-weight:600; padding:2px 7px; border-radius:100px;">Tech</span>
+                <span style="background:#F0FDFA; color:#0D9488; font-size:9px; font-weight:600; padding:2px 7px; border-radius:100px;">Career</span>
+                <span style="background:#F5F3FF; color:#7C3AED; font-size:9px; font-weight:600; padding:2px 7px; border-radius:100px;">Consulting</span>
+              </div>
+            </div>
+            <div style="position:relative; height:110px;" id="learning-curve-wrap">
+              <svg id="learning-curve-svg" width="100%" height="110" style="overflow:visible;"></svg>
               <div id="curve-tooltip" style="display:none; position:absolute; background:#fff; border:1.5px solid var(--border); border-radius:10px; padding:8px 12px; box-shadow:0 8px 24px rgba(15,23,42,.12); pointer-events:none; z-index:10; min-width:150px; font-size:11px;"></div>
             </div>
-            <div id="curve-empty" style="display:none; text-align:center; padding:20px 0; color:var(--muted); font-size:12px;">
-              📊 Attend your first session to start your curve!
+            <div id="curve-empty" style="display:none; text-align:center; padding:12px 0 4px; color:var(--muted); font-size:11px;">
+              Complete a session to start your learning curve 📊
             </div>
           </div>
 
-          <!-- ── STATS + QUICK ACTIONS SIDE BY SIDE ── -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
-
-            <!-- Stats mini -->
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
-              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
-                <div style="font-size:20px; font-weight:800; color:var(--blue);" id="dash-available-count">0</div>
-                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Available</div>
-              </div>
-              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
-                <div style="font-size:20px; font-weight:800; color:var(--teal);" id="dash-enrolled-count">0</div>
-                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Enrolled</div>
-              </div>
-              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
-                <div style="font-size:20px; font-weight:800; color:var(--amber);" id="dash-hours">—</div>
-                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Hrs</div>
-              </div>
+          <!-- ── QUICK ACTIONS ── -->
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px;">
+            <div onclick="switchDashTab('browse')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 8px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+              <div style="font-size:18px; margin-bottom:4px;">🔍</div>
+              <div style="font-size:10px; font-weight:700; color:var(--blue-dark);">Browse</div>
             </div>
-
-            <!-- Quick Actions mini -->
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
-              <div onclick="switchDashTab('browse')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
-                <div style="font-size:16px; margin-bottom:3px;">🔍</div>
-                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Browse</div>
-              </div>
-              <div onclick="switchDashTab('enrolled')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
-                <div style="font-size:16px; margin-bottom:3px;">📅</div>
-                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Enrolled</div>
-              </div>
-              <div onclick="switchDashTab('profile')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
-                <div style="font-size:16px; margin-bottom:3px;">👤</div>
-                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Profile</div>
-              </div>
+            <div onclick="switchDashTab('enrolled')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 8px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+              <div style="font-size:18px; margin-bottom:4px;">📅</div>
+              <div style="font-size:10px; font-weight:700; color:var(--blue-dark);">My Sessions</div>
+            </div>
+            <div onclick="switchDashTab('profile')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px 8px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+              <div style="font-size:18px; margin-bottom:4px;">👤</div>
+              <div style="font-size:10px; font-weight:700; color:var(--blue-dark);">Profile</div>
             </div>
           </div>
 
-          <!-- RECENT ENROLLMENTS compact -->
+          <!-- RECENT ENROLLMENTS -->
           <div>
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
               <h3 style="font-size:12px; font-weight:700; color:var(--blue-dark);">Recent Enrollments</h3>
               <span onclick="switchDashTab('enrolled')" style="font-size:11px; color:var(--blue); cursor:pointer; font-weight:600;">View all →</span>
             </div>
             <div id="dash-recent-list">
-              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;">
-                <div style="font-size:24px;margin-bottom:6px;">📅</div>
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center;">
+                <div style="font-size:22px;margin-bottom:6px;">📅</div>
                 <p style="font-size:12px;font-weight:600;color:var(--blue-dark);margin-bottom:4px;">No sessions yet</p>
                 <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Browse and register for your first session!</p>
                 <button class="btn btn-primary" onclick="switchDashTab('browse')" style="margin:0 auto;font-size:11px;padding:7px 14px;">Browse Sessions →</button>
@@ -1865,7 +1869,7 @@ function renderLearningCurve(enrollments) {
   if (empty) empty.style.display = 'none';
 
   const W = wrap.offsetWidth || 400;
-  const H = 120;
+  const H = 110;
   const padL = 28, padR = 16, padT = 12, padB = 28;
   const chartW = W - padL - padR;
   const chartH = H - padT - padB;
