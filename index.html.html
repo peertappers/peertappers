@@ -733,7 +733,7 @@
       <div class="step"><div class="step-icon">🔒</div><h3>Private Cohorts</h3><p>Host sessions visible only to your members. Invite-only registration with custom branding for your organisation.</p></div>
       <div class="step"><div class="step-icon">💸</div><h3>Flexible Pricing</h3><p>Starts free. Volume plans available for institutions running 10+ sessions/month. Contact us for a custom quote.</p></div>
     </div>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:36px;text-align:center;margin-bottom:48px;">
+    <div style="display:none;">
       <p style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-light);margin-bottom:24px;">Trusted by learners from</p>
       <div style="display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap;">
         <div style="font-size:18px;font-weight:800;color:var(--muted-light);">IIT Bombay</div>
@@ -956,7 +956,6 @@
       <div style="background:var(--blue-light);border-radius:var(--radius);padding:20px;"><div style="font-size:13px;font-weight:600;color:var(--blue-dark);margin-bottom:6px;">Response time</div><div style="font-size:13px;color:var(--muted);">We respond to all messages within 24 hours on business days.</div></div>
     </div>
   </div>
-  </div>
 
   <!-- CAMPUS AMBASSADOR SECTION -->
   <div style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));padding:44px 5%;">
@@ -1066,7 +1065,10 @@
     <div style="width:100%;max-width:460px;">
       <div style="text-align:center;margin-bottom:32px;">
         <div style="display:flex;justify-content:center;margin-bottom:12px;">
-          <a class="logo" onclick="showPage('landing')"><span class="logo-dot"></span>PeerTappers</a>
+          <a class="logo" onclick="showPage('landing')" style="color:var(--blue-dark);">
+            <span class="logo-dot"></span>
+            <span style="color:var(--blue-dark);">PeerTappers</span>
+          </a>
         </div>
         <p style="color:var(--muted);font-size:14px;">Learn from people one step ahead — for free.</p>
       </div>
@@ -1127,72 +1129,94 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <div style="background:var(--bg); overflow-y:auto;">
+    <div id="dash-main-content" style="background:var(--bg); overflow-y:auto;">
 
       <!-- ── OVERVIEW TAB ── -->
       <div id="dtab-content-overview">
-        <div style="padding:32px 36px;">
-          <div style="margin-bottom:28px;">
-            <h2 style="font-size:22px; font-weight:800; color:var(--blue-dark);">Welcome back 👋</h2>
-            <p style="color:var(--muted); font-size:14px; margin-top:4px;">Here's your PeerTappers learning journey so far.</p>
+        <div style="padding:20px 24px;">
+
+          <!-- WELCOME -->
+          <div style="margin-bottom:14px;">
+            <h2 style="font-size:17px; font-weight:800; color:var(--blue-dark);">Welcome back 👋</h2>
+            <p style="color:var(--muted); font-size:12px; margin-top:2px;">Your PeerTappers learning journey.</p>
           </div>
 
-          <!-- STATS -->
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px;">
-            <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px;">
-              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted-light); margin-bottom:8px;">Available Sessions</div>
-              <div style="font-size:36px; font-weight:800; color:var(--blue);">6</div>
-              <div style="font-size:12px; color:var(--muted); margin-top:4px;">New sessions weekly</div>
-            </div>
-            <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px;">
-              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted-light); margin-bottom:8px;">Sessions Enrolled</div>
-              <div style="font-size:36px; font-weight:800; color:var(--teal);" id="dash-enrolled-count">0</div>
-              <div style="font-size:12px; color:var(--muted); margin-top:4px;">Across all topics</div>
-            </div>
-            <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px;">
-              <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted-light); margin-bottom:8px;">Hours Learned</div>
-              <div style="font-size:36px; font-weight:800; color:var(--amber);" id="dash-hours">—</div>
-              <div style="font-size:12px; color:var(--muted); margin-top:4px;">60 min per session</div>
-            </div>
-          </div>
-
-          <!-- QUICK ACTIONS -->
-          <div style="margin-bottom:32px;">
-            <h3 style="font-size:15px; font-weight:700; color:var(--blue-dark); margin-bottom:14px;">Quick Actions</h3>
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
-              <div onclick="switchDashTab('browse')" style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:20px; cursor:pointer; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='var(--shadow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
-                <div style="font-size:24px; margin-bottom:8px;">🔍</div>
-                <div style="font-weight:700; color:var(--blue-dark); font-size:14px; margin-bottom:4px;">Browse Sessions</div>
-                <div style="font-size:12px; color:var(--muted);">Explore upcoming sessions</div>
+          <!-- ── LEARNING CURVE CHART ── -->
+          <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin-bottom:12px;">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+              <div>
+                <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--teal); margin-bottom:1px;">📈 Learning Curve</div>
+                <div style="font-size:13px; font-weight:700; color:var(--blue-dark);">Skill Accumulation Over Time</div>
+                <div style="font-size:10px; color:var(--muted-light);">Each dot = one session attended</div>
               </div>
-              <div onclick="switchDashTab('enrolled')" style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:20px; cursor:pointer; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='var(--shadow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
-                <div style="font-size:24px; margin-bottom:8px;">📅</div>
-                <div style="font-weight:700; color:var(--blue-dark); font-size:14px; margin-bottom:4px;">Enrolled Sessions</div>
-                <div style="font-size:12px; color:var(--muted);">Sessions you joined</div>
+              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                <span style="background:#EFF6FF; color:#1F4FD8; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Research</span>
+                <span style="background:#FFF8E1; color:#D97706; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Tech</span>
+                <span style="background:#F0FDFA; color:#0D9488; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Career</span>
+                <span style="background:#F5F3FF; color:#7C3AED; font-size:9px; font-weight:600; padding:2px 8px; border-radius:100px;">Consulting</span>
               </div>
-              <div onclick="switchDashTab('profile')" style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:20px; cursor:pointer; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='var(--shadow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
-                <div style="font-size:24px; margin-bottom:8px;">👤</div>
-                <div style="font-weight:700; color:var(--blue-dark); font-size:14px; margin-bottom:4px;">My Profile</div>
-                <div style="font-size:12px; color:var(--muted);">View and edit profile</div>
-              </div>
+            </div>
+            <div style="position:relative; height:120px;" id="learning-curve-wrap">
+              <svg id="learning-curve-svg" width="100%" height="120" style="overflow:visible;"></svg>
+              <div id="curve-tooltip" style="display:none; position:absolute; background:#fff; border:1.5px solid var(--border); border-radius:10px; padding:8px 12px; box-shadow:0 8px 24px rgba(15,23,42,.12); pointer-events:none; z-index:10; min-width:150px; font-size:11px;"></div>
+            </div>
+            <div id="curve-empty" style="display:none; text-align:center; padding:20px 0; color:var(--muted); font-size:12px;">
+              📊 Attend your first session to start your curve!
             </div>
           </div>
 
-          <!-- RECENT ENROLLMENTS -->
+          <!-- ── STATS + QUICK ACTIONS SIDE BY SIDE ── -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+
+            <!-- Stats mini -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
+                <div style="font-size:20px; font-weight:800; color:var(--blue);" id="dash-available-count">0</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Available</div>
+              </div>
+              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
+                <div style="font-size:20px; font-weight:800; color:var(--teal);" id="dash-enrolled-count">0</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Enrolled</div>
+              </div>
+              <div style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; text-align:center;">
+                <div style="font-size:20px; font-weight:800; color:var(--amber);" id="dash-hours">—</div>
+                <div style="font-size:9px; font-weight:600; color:var(--muted-light); text-transform:uppercase; letter-spacing:.04em; margin-top:1px; line-height:1.3;">Hrs</div>
+              </div>
+            </div>
+
+            <!-- Quick Actions mini -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+              <div onclick="switchDashTab('browse')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+                <div style="font-size:16px; margin-bottom:3px;">🔍</div>
+                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Browse</div>
+              </div>
+              <div onclick="switchDashTab('enrolled')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+                <div style="font-size:16px; margin-bottom:3px;">📅</div>
+                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Enrolled</div>
+              </div>
+              <div onclick="switchDashTab('profile')" style="background:var(--white); border:1px solid var(--border); border-radius:10px; padding:10px 6px; cursor:pointer; text-align:center; transition:all .2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.background='var(--blue-light)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--white)'">
+                <div style="font-size:16px; margin-bottom:3px;">👤</div>
+                <div style="font-size:9px; font-weight:700; color:var(--blue-dark); line-height:1.3;">Profile</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECENT ENROLLMENTS compact -->
           <div>
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
-              <h3 style="font-size:15px; font-weight:700; color:var(--blue-dark);">Recent Enrollments</h3>
-              <span onclick="switchDashTab('enrolled')" style="font-size:13px; color:var(--blue); cursor:pointer; font-weight:600;">View all →</span>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+              <h3 style="font-size:12px; font-weight:700; color:var(--blue-dark);">Recent Enrollments</h3>
+              <span onclick="switchDashTab('enrolled')" style="font-size:11px; color:var(--blue); cursor:pointer; font-weight:600;">View all →</span>
             </div>
             <div id="dash-recent-list">
-              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:36px;text-align:center;">
-                <div style="font-size:36px;margin-bottom:10px;">📅</div>
-                <p style="font-size:14px;font-weight:600;color:var(--blue-dark);margin-bottom:6px;">No sessions yet</p>
-                <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Browse and register for your first session!</p>
-                <button class="btn btn-primary" onclick="switchDashTab('browse')" style="margin:0 auto;">Browse Sessions →</button>
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;">
+                <div style="font-size:24px;margin-bottom:6px;">📅</div>
+                <p style="font-size:12px;font-weight:600;color:var(--blue-dark);margin-bottom:4px;">No sessions yet</p>
+                <p style="font-size:11px;color:var(--muted);margin-bottom:10px;">Browse and register for your first session!</p>
+                <button class="btn btn-primary" onclick="switchDashTab('browse')" style="margin:0 auto;font-size:11px;padding:7px 14px;">Browse Sessions →</button>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -1309,7 +1333,7 @@
 
 <!-- ══════════════ BLOG PAGE ══════════════ -->
 <div class="page" id="page-blog">
-  <div class="page-header">
+  <div class="page-header" id="blog-top">
     <div style="max-width:700px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Learning Resources</div>
       <h1>Blog & Insights</h1>
@@ -1446,7 +1470,7 @@ const sessions = [
   },
   {
     id:7, title:"Knowledge Management in Consulting: Tools, Systems & Best Practices",
-    category:"career", date:"Apr 5, 2026", time:"7:00 PM IST",
+    category:"consulting", date:"Apr 5, 2026", time:"7:00 PM IST",
     host:"Anika Desai", hostInitials:"AD", hostColor:"#7C3AED",
     hostRole:"Strategy Consultant", hostExp:"3 years in management consulting",
     hostBio:"Anika has built knowledge repositories and implemented KM systems across 4 consulting projects. She specialises in helping teams stop reinventing the wheel by making institutional knowledge accessible and reusable.",
@@ -1783,7 +1807,9 @@ async function fakeAuth() {
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0});
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 
   // Hide main nav on dashboard — sidebar handles navigation there
   const nav = document.querySelector('nav');
@@ -1791,8 +1817,12 @@ function showPage(name) {
 
   if(name === 'sessions') renderSessions(currentFilter);
   if(name === 'faq') renderFAQ();
-  if(name === 'blog') renderBlog(currentBlogFilter);
-  if(name === 'dashboard') loadDashboard();
+  if(name === 'blog') { renderBlog(currentBlogFilter); document.getElementById('blog-top')?.scrollIntoView({behavior:'smooth'}); }
+  if(name === 'dashboard') {
+    const mc = document.getElementById('dash-main-content');
+    if(mc) mc.scrollTop = 0;
+    loadDashboard();
+  }
   if(name === 'host') {
     document.getElementById('host-form-card').style.display = 'block';
     document.getElementById('host-success').style.display = 'none';
@@ -1808,7 +1838,126 @@ function showToast(msg) {
   window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
 }
 
-// ── DASHBOARD ──
+// ── LEARNING CURVE ──
+const catColors = {
+  research:   '#1F4FD8',
+  tech:       '#FFB703',
+  career:     '#2EC4B6',
+  consulting: '#7C3AED',
+  default:    '#1F4FD8'
+};
+
+function renderLearningCurve(enrollments) {
+  const wrap  = document.getElementById('learning-curve-wrap');
+  const svg   = document.getElementById('learning-curve-svg');
+  const empty = document.getElementById('curve-empty');
+  const tip   = document.getElementById('curve-tooltip');
+  if (!svg || !wrap) return;
+
+  if (!enrollments || enrollments.length === 0) {
+    svg.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+
+  svg.style.display = '';
+  if (empty) empty.style.display = 'none';
+
+  const W = wrap.offsetWidth || 400;
+  const H = 120;
+  const padL = 28, padR = 16, padT = 12, padB = 28;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+
+  // Build cumulative points (10 pts per session)
+  const data = enrollments.map((e, i) => ({
+    label: e.title || `Session ${i+1}`,
+    date: e.sessionDate || e.date || '',
+    pts: (i + 1) * 10,
+    category: e.category || 'default'
+  }));
+
+  const maxPts = data[data.length - 1].pts + 10;
+  const xStep = data.length > 1 ? chartW / (data.length - 1) : chartW / 2;
+
+  const px = (i) => padL + (data.length > 1 ? i * xStep : chartW / 2);
+  const py = (v) => padT + chartH - (v / maxPts) * chartH;
+
+  // Build path
+  let path = `M ${px(0)} ${py(data[0].pts)}`;
+  for (let i = 1; i < data.length; i++) {
+    const cx1 = px(i-1) + xStep * 0.4;
+    const cx2 = px(i)   - xStep * 0.4;
+    path += ` C ${cx1} ${py(data[i-1].pts)}, ${cx2} ${py(data[i].pts)}, ${px(i)} ${py(data[i].pts)}`;
+  }
+
+  // Area fill path
+  const lastX = px(data.length - 1);
+  const firstX = px(0);
+  const areaPath = path + ` L ${lastX} ${H - padB} L ${firstX} ${H - padB} Z`;
+
+  // Y axis labels
+  const yTicks = [0, Math.round(maxPts/2), maxPts];
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="lcGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#1F4FD8" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="#1F4FD8" stop-opacity="0.01"/>
+      </linearGradient>
+    </defs>
+    <!-- Grid lines -->
+    ${yTicks.map(v => `
+      <line x1="${padL}" y1="${py(v)}" x2="${W - padR}" y2="${py(v)}"
+            stroke="#f1f5f9" stroke-width="1"/>
+      <text x="${padL - 4}" y="${py(v) + 3}" font-size="8" fill="#cbd5e1"
+            text-anchor="end" font-family="Inter,sans-serif">${v}</text>
+    `).join('')}
+    <!-- Area fill -->
+    <path d="${areaPath}" fill="url(#lcGrad)"/>
+    <!-- Curve line -->
+    <path d="${path}" fill="none" stroke="#1F4FD8" stroke-width="2" stroke-linecap="round"/>
+    <!-- Dots + date labels -->
+    ${data.map((d, i) => `
+      <circle cx="${px(i)}" cy="${py(d.pts)}" r="5"
+              fill="${catColors[d.category] || catColors.default}"
+              stroke="#fff" stroke-width="2"
+              style="filter:drop-shadow(0 2px 4px ${catColors[d.category] || catColors.default}88);cursor:pointer;"
+              data-i="${i}"/>
+      <text x="${px(i)}" y="${H - padB + 10}" font-size="8" fill="#94a3b8"
+            text-anchor="middle" font-family="Inter,sans-serif">
+        ${d.date.replace(/,.*/, '') || `S${i+1}`}
+      </text>
+    `).join('')}
+  `;
+
+  // Tooltip on dot hover
+  svg.querySelectorAll('circle').forEach(c => {
+    c.addEventListener('mouseenter', (e) => {
+      const i = parseInt(c.dataset.i);
+      const d = data[i];
+      const col = catColors[d.category] || catColors.default;
+      tip.innerHTML = `
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;margin-bottom:4px;">${d.date}</div>
+        <div style="font-size:12px;font-weight:700;color:#0B2A6F;margin-bottom:6px;line-height:1.3;">${d.label}</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="background:${col}18;color:${col};font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;">${d.category}</span>
+          <span style="font-size:12px;font-weight:700;color:${col};margin-left:auto;">${d.pts} pts</span>
+        </div>`;
+      tip.style.display = 'block';
+      const rect = wrap.getBoundingClientRect();
+      const dotRect = c.getBoundingClientRect();
+      let left = dotRect.left - rect.left - 75;
+      left = Math.max(0, Math.min(left, rect.width - 170));
+      tip.style.left = left + 'px';
+      tip.style.top  = (dotRect.top - rect.top - 80) + 'px';
+    });
+    c.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+  });
+}
+
+
 let dashCurrentFilter = 'all';
 let currentRating     = 0;
 
@@ -1819,6 +1968,8 @@ function switchDashTab(tab) {
     if(content) content.style.display = (t === tab) ? 'block' : 'none';
     if(btn)     btn.classList.toggle('active-dash-tab', t === tab);
   });
+  const mc = document.getElementById('dash-main-content');
+  if(mc) mc.scrollTop = 0;
   if(tab === 'browse') renderDashBrowse(dashCurrentFilter);
 }
 
@@ -1906,6 +2057,30 @@ async function loadDashboard() {
     // Stats
     setEl('dash-enrolled-count', list.length);
     setEl('dash-hours', list.length > 0 ? list.length + 'h' : '—');
+    setEl('dash-available-count', sessions.length);
+
+    // Enrich registrations with session metadata
+    const enriched = list.map(r => {
+      const s = sessions.find(s => s.title === r.session_title);
+      return { ...r, category: s?.category || 'career', sessionDate: s?.date || r.registered_at?.slice(0,10) || '' };
+    });
+
+    // Learning curve — completed sessions only (session date in the past)
+    const now2 = new Date();
+    const completed = enriched.filter(r => {
+      const s = sessions.find(s => s.title === r.session_title);
+      if (!s) return false;
+      // Parse session date string e.g. "Apr 5, 2026"
+      const d = new Date(s.date);
+      return !isNaN(d) && d < now2;
+    }).sort((a,b) => new Date(a.sessionDate) - new Date(b.sessionDate));
+
+    // Stats: show completed pts
+    const completedPts = completed.length * 10;
+    const ptsEl = document.getElementById('dash-skill-pts');
+    if(ptsEl) ptsEl.textContent = completedPts > 0 ? completedPts + ' pts' : '—';
+
+    renderLearningCurve(completed);
 
     // Recent list on overview
     const recentEl = document.getElementById('dash-recent-list');
@@ -2444,7 +2619,7 @@ const blogPosts = [
   {
     id: 7,
     slug: 'knowledge-management-consulting',
-    category: 'career',
+    category: 'consulting',
     tag: 'Consulting',
     tagClass: 'tag-blue',
     title: 'Knowledge Management in Consulting: How to Stop Reinventing the Wheel',
